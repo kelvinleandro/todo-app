@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+
+import AllTodos from "./screens/AllTodos";
+import ManageTodo from "./screens/ManageTodo";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="light" />
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="AllTodos"
+          screenOptions={{
+            cardStyle: { backgroundColor: "#0F1C2E" },
+            headerStyle: {
+              backgroundColor: "#374357",
+            },
+            headerTintColor: "#fff",
+            headerTitleAlign: "center"
+          }}
+        >
+          <Stack.Screen
+            name="AllTodos"
+            component={AllTodos}
+            options={{
+              title: "All To-Dos",
+            }}
+          />
+          <Stack.Screen name="ManageTodo" component={ManageTodo} options={{
+            presentation: "modal"
+          }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
