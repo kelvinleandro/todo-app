@@ -6,7 +6,7 @@ const IconButton = ({ icon, size, color, onPress }) => {
   return (
     <StyledTouchableOpacity onPress={onPress} activeOpacity={0.75}>
       <IconContainer>
-        <Ionicons name={icon} size={size} color={color} />
+        <StyledIcon name={icon} size={size} />
       </IconContainer>
     </StyledTouchableOpacity>
   );
@@ -22,3 +22,7 @@ const IconContainer = styled.View`
   margin-horizontal: 8px;
   margin-vertical: 2px;
 `;
+
+const StyledIcon = styled(Ionicons).attrs(props => ({
+  color: props.theme.text
+}))``;

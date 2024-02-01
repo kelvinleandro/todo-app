@@ -6,7 +6,7 @@ const CreateButton = ({ onPress }) => {
   return (
     <StyledTouchableOpacity onPress={onPress} activeOpacity={0.75}>
       <ButtonContainer>
-        <Ionicons name="add" size={48} color="#0F1C2E" />
+        <StyledIcon name="add" size={48} />
       </ButtonContainer>
     </StyledTouchableOpacity>
   );
@@ -23,5 +23,9 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 const ButtonContainer = styled.View`
   border-radius: 28px;
   padding: 8px;
-  background-color: #acc2ef;
+  background-color: ${({theme}) => theme.button};
 `;
+
+const StyledIcon = styled(Ionicons).attrs(props => ({
+  color: props.theme.primary, // Accesses iconColor from your theme
+}))``;

@@ -20,7 +20,7 @@ const InputContainer = styled(View)`
 const Label = styled(Text)`
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  color: ${({theme}) => theme.text};
   margin-bottom: 4px;
 `;
 
@@ -28,5 +28,5 @@ const InputField = styled(TextInput)`
   background-color: #fff;
   padding: 6px;
   font-size: 18px;
-  color: #0f1c2e;
+  color: ${({ theme }) => theme.text};
 `;
