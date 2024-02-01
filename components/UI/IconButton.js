@@ -1,29 +1,24 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import React from 'react';
+import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
-function IconButton({ icon, size, color, onPress }) {
+const IconButton = ({ icon, size, color, onPress }) => {
   return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => pressed && styles.pressed}
-    >
-      <View style={styles.buttonContainer}>
+    <StyledTouchableOpacity onPress={onPress} activeOpacity={0.75}>
+      <IconContainer>
         <Ionicons name={icon} size={size} color={color} />
-      </View>
-    </Pressable>
+      </IconContainer>
+    </StyledTouchableOpacity>
   );
-}
+};
 
 export default IconButton;
 
-const styles = StyleSheet.create({
-  buttonContainer: {
-    borderRadius: 24,
-    padding: 6,
-    marginHorizontal: 8,
-    marginVertical: 2
-  },
-  pressed: {
-    opacity: 0.75,
-  },
-});
+const StyledTouchableOpacity = styled.TouchableOpacity``;
+
+const IconContainer = styled.View`
+  border-radius: 24px;
+  padding: 6px;
+  margin-horizontal: 8px;
+  margin-vertical: 2px;
+`;

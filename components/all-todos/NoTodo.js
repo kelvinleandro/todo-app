@@ -1,24 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import styled from 'styled-components/native';
 
 const NoTodo = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text} >Your To-Do list is empty</Text>
-    </View>
+    <Container>
+      <Message>Your To-Do list is empty</Message>
+    </Container>
   );
 };
 
 export default NoTodo;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "bold"
-  }
-})
+const Container = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Message = styled.Text`
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+`;

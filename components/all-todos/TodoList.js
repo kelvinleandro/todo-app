@@ -1,21 +1,19 @@
-import { ScrollView, StyleSheet } from "react-native";
-import TodoItem from "./TodoItem";
+import React from 'react';
+import styled from 'styled-components/native';
+import TodoItem from './TodoItem';
 
 const TodoList = ({ todosData }) => {
   return (
-    <ScrollView styles={styles.container}>
+    <StyledScrollView contentContainerStyle={{ alignItems: 'center' }}>
       {todosData.map((todo) => (
         <TodoItem key={todo.id} id={todo.id} text={todo.title} />
       ))}
-    </ScrollView>
+    </StyledScrollView>
   );
 };
 
 export default TodoList;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-});
+const StyledScrollView = styled.ScrollView.attrs({
+  contentContainerStyle: props => props.contentContainerStyle,
+})``;

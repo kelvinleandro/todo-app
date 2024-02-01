@@ -1,30 +1,32 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import React from "react";
+import { Text, TextInput, View } from "react-native";
+import styled from "styled-components/native";
 
 const Input = ({ label, textInputConfig }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.label} >{label}</Text>
-      <TextInput style={styles.input} {...textInputConfig}  />
-    </View>
+    <InputContainer>
+      <Label>{label}</Label>
+      <InputField {...textInputConfig} />
+    </InputContainer>
   );
 };
 
 export default Input;
 
-const styles = StyleSheet.create({
-  container: {
-    marginVertical: 8
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: "#fff",
-    marginBottom: 4,
-  },
-  input: {
-    backgroundColor: "#fff",
-    padding: 6,
-    fontSize: 18,
-    color: "#0F1C2E"
-  }
-})
+const InputContainer = styled(View)`
+  margin: 0 8px;
+`;
+
+const Label = styled(Text)`
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+`;
+
+const InputField = styled(TextInput)`
+  background-color: #fff;
+  padding: 6px;
+  font-size: 18px;
+  color: #0f1c2e;
+`;

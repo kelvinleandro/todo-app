@@ -1,36 +1,38 @@
-import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import styled from 'styled-components/native';
 
-const TodoItem = ({id, text}) => {
-  const navigation = useNavigation()
+const TodoItem = ({ id, text }) => {
+  const navigation = useNavigation();
 
   const pressHandler = () => {
-    navigation.navigate("ManageTodo", {
-      todoId: id
-    })
-  }
+    navigation.navigate('ManageTodo', {
+      todoId: id,
+    });
+  };
 
   return (
-    <TouchableOpacity onPress={pressHandler} activeOpacity={0.7} >
-      <View style={styles.container} >
-        <Text style={styles.text} >{text}</Text>
-      </View>
-    </TouchableOpacity>
+    <StyledTouchableOpacity onPress={pressHandler} activeOpacity={0.7}>
+      <ItemContainer>
+        <ItemText>{text}</ItemText>
+      </ItemContainer>
+    </StyledTouchableOpacity>
   );
 };
 
-export default TodoItem
+export default TodoItem;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#374357",
-    padding: 12,
-    marginBottom: 14,
-    borderRadius: 12
-  },
-  text: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "600"
-  }
-})
+const StyledTouchableOpacity = styled.TouchableOpacity``;
+
+const ItemContainer = styled.View`
+  background-color: #374357;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+`;
+
+const ItemText = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+`;
