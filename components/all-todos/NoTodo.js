@@ -18,7 +18,7 @@ const Container = styled.View`
 `;
 
 const Message = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.text};
   font-size: 24px;
   font-weight: bold;
 `;

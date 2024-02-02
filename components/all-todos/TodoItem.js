@@ -25,14 +25,14 @@ export default TodoItem;
 const StyledTouchableOpacity = styled.TouchableOpacity``;
 
 const ItemContainer = styled.View`
-  background-color: #374357;
+  background-color: ${({theme}) => theme.secondary};
   padding: 12px;
   margin-bottom: 14px;
   border-radius: 12px;
 `;
 
 const ItemText = styled.Text`
-  color: #fff;
+  color: ${({theme}) => theme.text};
   font-size: 20px;
   font-weight: 600;
 `;
