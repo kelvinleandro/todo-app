@@ -28,5 +28,5 @@ const InputField = styled(TextInput)`
   background-color: #fff;
   padding: 6px;
   font-size: 18px;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.inputText};
 `;
