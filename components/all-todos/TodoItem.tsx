@@ -1,9 +1,15 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
+import { NavigationProp } from '@react-navigation/native';
 
-const TodoItem = ({ id, text }) => {
-  const navigation = useNavigation();
+interface TodoItemProps {
+  id: string;
+  text: string;
+}
+
+const TodoItem: React.FC<TodoItemProps> = ({ id, text }) => {
+  const navigation = useNavigation<NavigationProp<any>>();
 
   const pressHandler = () => {
     navigation.navigate('ManageTodo', {

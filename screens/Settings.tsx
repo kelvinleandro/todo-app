@@ -1,14 +1,8 @@
-import { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
 import ColorSchemePicker from "../components/settings/ColorSchemePicker";
 
-const Settings = () => {
-  // const [theme, setTheme] = useState("automatic");
-
-  // const handleColorSchemeChange = (value) => {
-  //   setTheme(value);
-  // };
-
+const Settings: React.FC = () => {
   return (
     <SettingsContainer>
       <SettingOption>
