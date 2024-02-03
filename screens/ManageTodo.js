@@ -1,5 +1,5 @@
 import { Alert, View, StyleSheet } from "react-native";
-import { useState, useLayoutEffect } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 
 import { createTodo, readTodo, updateTodo, deleteTodo } from "../util/database";
 import IconButton from "../components/UI/IconButton";
@@ -14,7 +14,7 @@ const ManageTodo = ({ route, navigation }) => {
   const editedTodoId = route.params?.todoId;
   const isEditing = !!editedTodoId;
 
-  useState(() => {
+  useEffect(() => {
     async function getEditedTodo() {
       const response = await readTodo(editedTodoId);
       setInput({
