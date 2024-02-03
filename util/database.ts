@@ -50,12 +50,13 @@ const readTodo = async (id: string): Promise<Array<{ id: string; title: string }
   });
 };
 
-const createTodo = async (id: string, title: string): Promise<void> => {
+const createTodo = async (todo:string): Promise<void> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
+      const id = Math.random().toString();
       tx.executeSql(
         "INSERT INTO todos (id, title) VALUES (?, ?);",
-        [id, title],
+        [id, todo],
         () => resolve(),
         (_, error) => {
           console.log("Error saving todo:", error);
