@@ -2,10 +2,10 @@ import React, { useState, useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 
-import { createTable, readAllTodos } from "../util/database";
-import NoTodo from "../components/all-todos/NoTodo";
-import TodoList from "../components/all-todos/TodoList";
-import CreateButton from "../components/UI/CreateButton";
+import { createTable, readAllTodos } from "@util/database";
+import NoTodo from "@components/all-todos/NoTodo";
+import TodoList from "@components/all-todos/TodoList";
+import CreateButton from "@components/UI/CreateButton";
 import { NavigationProp } from "@react-navigation/native";
 
 interface AllTodosProps {

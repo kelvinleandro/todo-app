@@ -5,14 +5,14 @@ import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/";
 import { useColorScheme } from "react-native";
 
-import { THEMES, Themes } from "./util/themes";
-import IconButton from "./components/UI/IconButton";
+import { THEMES, Themes } from "@util/themes";
+import IconButton from "@components/UI/IconButton";
 import AllTodos from "./screens/AllTodos";
 import ManageTodo from "./screens/ManageTodo";
 import Settings from "./screens/Settings";
 import ColorSchemeProvider, {
   ColorSchemeContext,
-} from "./context/ColorSchemeContext";
+} from "@context/ColorSchemeContext";
 
 const Stack = createStackNavigator();
 

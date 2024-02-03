@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import RNPickerSelect from 'react-native-picker-select';
-import { ColorSchemeContext } from "../../context/ColorSchemeContext";
+import { ColorSchemeContext } from "@context/ColorSchemeContext";
 
 const ColorSchemePicker: React.FC = () => {
   const colorSchemeCtx = useContext(ColorSchemeContext);

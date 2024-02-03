@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components/native';
 import TodoItem from './TodoItem';
 import { ScrollView } from 'react-native';
 
@@ -23,7 +22,3 @@ const TodoList: React.FC<TodoListProps> = ({ todosData }) => {
 };
 
 export default TodoList;
-
-// const StyledScrollView = styled.ScrollView.attrs({
-//   contentContainerStyle: (props) => props.contentContainerStyle,
-// })``;

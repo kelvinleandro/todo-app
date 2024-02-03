@@ -7,9 +7,9 @@ import {
   updateTodo,
   deleteTodo,
 } from "../util/database";
-import IconButton from "../components/UI/IconButton";
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
+import IconButton from "@components/UI/IconButton";
+import Input from "@components/UI/Input";
+import Button from "@components/UI/Button";
 
 interface ManageTodoProps {
   route: any;
