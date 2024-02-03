@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/";
 import { useColorScheme } from "react-native";
 
-import { THEMES } from "./util/themes";
+import { THEMES, Themes } from "./util/themes";
 import IconButton from "./components/UI/IconButton";
 import AllTodos from "./screens/AllTodos";
 import ManageTodo from "./screens/ManageTodo";
@@ -16,11 +16,11 @@ import ColorSchemeProvider, {
 
 const Stack = createStackNavigator();
 
-const Root = () => {
-  const deviceTheme = useColorScheme()
+const Root: React.FC = () => {
+  const deviceTheme = useColorScheme() || "light";
   const schemeCtx = useContext(ColorSchemeContext);
-  const theme = schemeCtx.value === "automatic" ? THEMES[deviceTheme] : THEMES[schemeCtx.currentTheme];
-  
+  const theme = schemeCtx.value === "automatic" ? THEMES[deviceTheme] : THEMES[schemeCtx.currentTheme as keyof Themes];
+
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="auto" />
@@ -66,10 +66,12 @@ const Root = () => {
   );
 };
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <ColorSchemeProvider>
       <Root />
     </ColorSchemeProvider>
   );
-}
+};
+
+export default App;

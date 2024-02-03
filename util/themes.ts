@@ -7,7 +7,7 @@ interface Theme {
   dropdown: string;
 }
 
-interface Themes {
+export interface Themes {
   light: Theme;
   dark: Theme;
 }
