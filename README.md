@@ -10,7 +10,7 @@ There are three other branches:
 
 2. automatic-theme: version "2.0". This version automatically changes the theme based on the device theme (There is no settings screen yet).
 
-3. final-ts: It has the same features as the main branch, but now using TypeScript (it wasn't finished).
+3. final-ts: It has the same features as the main branch, but now using TypeScript.
 
 ## Preview
 
