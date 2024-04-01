@@ -1,14 +1,24 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 import { useFocusEffect } from '@react-navigation/native';
 
-import { createTable, readAllTodos } from "../util/database";
-import NoTodo from "../components/all-todos/NoTodo";
-import TodoList from "../components/all-todos/TodoList";
-import CreateButton from "../components/UI/CreateButton";
+import { createTable, readAllTodos } from "@util/database";
+import NoTodo from "@components/all-todos/NoTodo";
+import TodoList from "@components/all-todos/TodoList";
+import CreateButton from "@components/UI/CreateButton";
+import { NavigationProp } from "@react-navigation/native";
 
-const AllTodos = ({ navigation }) => {
-  const [todos, setTodos] = useState([]);
+interface AllTodosProps {
+  navigation: NavigationProp<any>;
+}
+
+interface Todo {
+  id: string;
+  title: string;
+}
+
+const AllTodos: React.FC<AllTodosProps> = ({ navigation }) => {
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   useFocusEffect(
     useCallback(() => {
@@ -45,4 +55,4 @@ const styles = StyleSheet.create({
     paddingVertical: 22,
     paddingHorizontal: 14
   }
-})
+});

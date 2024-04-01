@@ -1,18 +1,34 @@
+import { useState, useLayoutEffect, useEffect } from "react";
 import { Alert, View, StyleSheet } from "react-native";
-import { useEffect, useState, useLayoutEffect } from "react";
 
-import { createTodo, readTodo, updateTodo, deleteTodo } from "../util/database";
-import IconButton from "../components/UI/IconButton";
-import Input from "../components//UI/Input";
-import Button from "../components/UI/Button";
+import {
+  createTodo,
+  readTodo,
+  updateTodo,
+  deleteTodo,
+} from "../util/database";
+import IconButton from "@components/UI/IconButton";
+import Input from "@components/UI/Input";
+import Button from "@components/UI/Button";
 
-const ManageTodo = ({ route, navigation }) => {
+interface ManageTodoProps {
+  route: any;
+  navigation: any;
+}
+
+const ManageTodo: React.FC<ManageTodoProps> = ({ route, navigation }) => {
   const [input, setInput] = useState({
     value: "",
     isValid: true,
   });
   const editedTodoId = route.params?.todoId;
   const isEditing = !!editedTodoId;
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: isEditing ? "Edit To-Do" : "Add To-Do",
+    });
+  }, [navigation, isEditing]);
 
   useEffect(() => {
     async function getEditedTodo() {
@@ -23,14 +39,10 @@ const ManageTodo = ({ route, navigation }) => {
       });
     }
 
-    getEditedTodo();
-  }, []);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: isEditing ? "Edit To-Do" : "Add To-Do",
-    });
-  }, [navigation, isEditing]);
+    if (isEditing) {
+      getEditedTodo();
+    }
+  }, [editedTodoId, isEditing]);
 
   async function confirmHandler() {
     try {
@@ -54,21 +66,19 @@ const ManageTodo = ({ route, navigation }) => {
     navigation.goBack();
   }
 
-  function inputChangedHandler(enteredValue) {
+  function inputChangedHandler(enteredValue: string) {
     setInput({ value: enteredValue, isValid: true });
   }
 
   function submitHandler() {
-    const inputIsvalid = input.value?.trim().length > 0;
+    const inputIsValid = input.value?.trim().length > 0;
 
-    if (!inputIsvalid) {
+    if (!inputIsValid) {
       Alert.alert("Invalid input", "Please check your input values");
-      setInput((current) => {
-        return {
-          value: current.value,
-          isValid: inputIsvalid,
-        };
-      });
+      setInput((current) => ({
+        value: current.value,
+        isValid: inputIsValid,
+      }));
       return;
     }
 
@@ -86,10 +96,10 @@ const ManageTodo = ({ route, navigation }) => {
           }}
         />
         <View style={styles.buttons}>
-          <Button style={styles.button} mode="flat" onPress={cancelHandler}>
+          <Button mode="flat" onPress={cancelHandler}>
             Cancel
           </Button>
-          <Button style={styles.button} onPress={submitHandler}>
+          <Button mode="contained" onPress={submitHandler}>
             {isEditing ? "Update" : "Add"}
           </Button>
         </View>
@@ -98,7 +108,6 @@ const ManageTodo = ({ route, navigation }) => {
         <View style={styles.deleteContainer}>
           <IconButton
             icon="trash"
-            color={"#fff"}
             size={36}
             onPress={deleteTodoHandler}
           />
@@ -125,8 +134,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 16,
-  },
-  button: {
-    marginHorizontal: 6,
-  },
+  }
 });

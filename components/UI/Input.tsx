@@ -1,8 +1,13 @@
-import React from "react";
-import { Text, TextInput, View } from "react-native";
-import styled from "styled-components/native";
+import React from 'react';
+import { TextInputProps, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 
-const Input = ({ label, textInputConfig }) => {
+interface InputProps {
+  label: string;
+  textInputConfig: TextInputProps;
+}
+
+const Input: React.FC<InputProps> = ({ label, textInputConfig }) => {
   return (
     <InputContainer>
       <Label>{label}</Label>
@@ -20,11 +25,11 @@ const InputContainer = styled(View)`
 const Label = styled(Text)`
   font-size: 18px;
   font-weight: bold;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
   margin-bottom: 4px;
 `;
 
-const InputField = styled(TextInput)`
+const InputField = styled.TextInput<TextInputProps>`
   background-color: #fff;
   padding: 6px;
   font-size: 18px;

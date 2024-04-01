@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
-const IconButton = ({ icon, size, onPress }) => {
+interface IconButtonProps {
+  icon: keyof typeof Ionicons.glyphMap;
+  size: number;
+  onPress: () => void;
+}
+
+const IconButton: React.FC<IconButtonProps> = ({ icon, size, onPress }) => {
   return (
     <StyledTouchableOpacity onPress={onPress} activeOpacity={0.75}>
       <IconContainer>
@@ -22,6 +28,6 @@ const IconContainer = styled.View`
   margin: 8px 2px;
 `;
 
-const StyledIcon = styled(Ionicons).attrs(props => ({
-  color: props.theme.text
+const StyledIcon = styled(Ionicons).attrs((props) => ({
+  color: props.theme.text,
 }))``;

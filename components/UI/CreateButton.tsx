@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
-const CreateButton = ({ onPress }) => {
+interface CreateButtonProps {
+  onPress: () => void;
+}
+
+const CreateButton: React.FC<CreateButtonProps> = ({ onPress }) => {
   return (
     <StyledTouchableOpacity onPress={onPress} activeOpacity={0.75}>
       <ButtonContainer>
@@ -23,9 +27,9 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
 const ButtonContainer = styled.View`
   border-radius: 28px;
   padding: 8px;
-  background-color: ${({theme}) => theme.button};
+  background-color: ${({ theme }) => theme.button};
 `;
 
-const StyledIcon = styled(Ionicons).attrs(props => ({
-  color: props.theme.primary, // Accesses iconColor from your theme
+const StyledIcon = styled(Ionicons).attrs((props) => ({
+  color: props.theme.primary,
 }))``;

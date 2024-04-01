@@ -2,7 +2,7 @@ import * as SQLite from "expo-sqlite";
 
 const db = SQLite.openDatabase("app.db");
 
-const createTable = async () => {
+const createTable = async (): Promise<void> => {
   db.transaction((tx) => {
     tx.executeSql(
       "CREATE TABLE IF NOT EXISTS todos (id TEXT PRIMARY KEY NOT NULL, title TEXT);",
@@ -16,7 +16,7 @@ const createTable = async () => {
   });
 };
 
-const readAllTodos = async () => {
+const readAllTodos = async (): Promise<Array<{ id: string; title: string }>> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -33,7 +33,7 @@ const readAllTodos = async () => {
   });
 };
 
-const readTodo = async (id) => {
+const readTodo = async (id: string): Promise<Array<{ id: string; title: string }>> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -50,7 +50,7 @@ const readTodo = async (id) => {
   });
 };
 
-const createTodo = async (todo) => {
+const createTodo = async (todo:string): Promise<void> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       const id = Math.random().toString();
@@ -68,7 +68,7 @@ const createTodo = async (todo) => {
   });
 };
 
-const updateTodo = async (id, title) => {
+const updateTodo = async (id: string, title: string): Promise<void> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
@@ -85,7 +85,7 @@ const updateTodo = async (id, title) => {
   });
 };
 
-const deleteTodo = async (id) => {
+const deleteTodo = async (id: string): Promise<void> => {
   return new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(

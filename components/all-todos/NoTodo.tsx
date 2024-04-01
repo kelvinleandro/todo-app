@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-const NoTodo = () => {
+const NoTodo: React.FC = () => {
   return (
     <Container>
       <Message>Your To-Do list is empty</Message>
@@ -18,7 +18,7 @@ const Container = styled.View`
 `;
 
 const Message = styled.Text`
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 24px;
   font-weight: bold;
 `;
